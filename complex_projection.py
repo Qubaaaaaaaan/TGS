@@ -195,11 +195,5 @@ if __name__ == "__main__":
     visualize_angle_projection(sinogram, angle_idx=20, diameter_mm=DIAMETER_MM)
     
     # 保存投影数据
-    np.save(f"complex_projections.npy", projections)
-    print(f"投影数据已保存为 'complex_projections_{NUM_ANGLES}x{NUM_DETECTORS}_128x128.npy'")
-    
-    # 保存物体信息 (用于重建验证)
-    import json
-    with open(f"phantom_objects_{NUM_ANGLES}x{NUM_DETECTORS}_128x128.json", "w") as f:
-        json.dump(objects, f)
-    print(f"物体信息已保存为 'phantom_objects_{NUM_ANGLES}x{NUM_DETECTORS}_128x128.json'")
+    np.save(f"projection_data/complex_projections.npy", projections)
+    print(f"投影数据已保存为 'projection_data/complex_projections_{NUM_ANGLES}x{NUM_DETECTORS}_128x128.npy'")

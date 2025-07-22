@@ -190,5 +190,5 @@ if __name__ == "__main__":
     sinogram = visualize_rectangle_projection_data(projections, s_values)
     
     # 保存投影数据
-    np.save("rectangle_projections.npy", projections)
-    print("投影数据已保存为 'rectangle_projections.npy'")
+    np.save("projection_data/rectangle_projections.npy", projections)
+    print("投影数据已保存为 'projection_data/rectangle_projections.npy'")

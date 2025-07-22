@@ -100,5 +100,5 @@ if __name__ == "__main__":
     sinogram = visualize_projection_data(projections)
     
     # 保存投影数据
-    np.save("bucket_projections.npy", projections)
-    print("投影数据已保存为 'bucket_projections.npy'")
+    np.save("projection_data/bucket_projections.npy", projections)
+    print("投影数据已保存为 'projection_data/bucket_projections.npy'")

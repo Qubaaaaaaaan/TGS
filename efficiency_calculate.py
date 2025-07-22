@@ -185,4 +185,28 @@ for angle_deg in range(num_angles):
     save_npz(fname, eff_matrix)
     partial_files.append(fname)
     print(f"{angle_deg} 角度处理完成")
-    
+# 初始化列表存储所有稀疏矩阵
+sparse_matrices = []
+
+# 遍历所有角度文件
+for angle_deg in range(num_angles):
+    # 加载当前角度的效率矩阵
+    fname = f"eff_1/efficiency_angle_{angle_deg:03d}.npz"
+    sparse_mat = load_npz(fname)
+    sparse_matrices.append(sparse_mat)
+    print(f"已加载角度 {angle_deg} 的数据")
+
+# 垂直堆叠所有稀疏矩阵
+combined_matrix = vstack(sparse_matrices)
+
+# 检查最终形状
+expected_shape = (num_angles * num_detectors, 128)
+if combined_matrix.shape != expected_shape:
+    print(f"警告：合并后的矩阵形状为 {combined_matrix.shape}，预期为 {expected_shape}")
+else:
+    print(f"成功创建合并矩阵，形状为 {combined_matrix.shape}")
+
+# 保存合并后的矩阵
+output_file = "eff_1/combined_efficiency_matrix.npz"
+save_npz(output_file, combined_matrix)
+print(f"合并后的矩阵已保存至 {output_file}")

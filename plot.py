@@ -54,5 +54,5 @@ def visualize_reconstruction(image, size=128, title='CT重建图像', save_path=
 if __name__ == "__main__":
     size = 256
     test_image = np.zeros(size*size)
-    data = np.load('result_1.npy')
-    visualize_reconstruction(0.5*data, title='transmission reconstruction', save_path='output.png')
+    data = np.load('emission_result.npy')
+    visualize_reconstruction(0.5*data, title='reconstruction', save_path='emission_output.png')

@@ -280,8 +280,8 @@ def main():
     result = A.multiply(B)
     
     # 保存矩阵
-    save_npz('system_matrix_projection_rows.npz', result)
-    print(f"系统矩阵已保存为 'system_matrix_projection_rows.npz'，形状: {result.shape}")
+    save_npz('system_matrix_emission.npz', result)
+    print(f"系统矩阵已保存为 'system_matrix_emission.npz'，形状: {result.shape}")
     
     build_time = time.time() - start_time
     print(f"系统矩阵构建完成! 耗时: {build_time:.1f}秒")

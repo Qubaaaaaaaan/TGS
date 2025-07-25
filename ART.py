@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.sparse import lil_matrix, load_npz
+from scipy.sparse import lil_matrix, load_npz,csr_matrix
 import math
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm, PowerNorm
@@ -12,9 +12,6 @@ A_csr = load_npz('system_matrix_36x50_128x128.npz')
 print('A_matrix has been constructed')
 
 
-import numpy as np
-from scipy.sparse import csr_matrix
-
 # 预计算桶约束掩膜（内切圆）
 indices = np.arange(128*128)
 x_coords = indices // 128  # 行坐标
@@ -24,10 +21,10 @@ barrelR_sq = 64.0**2  # 内切圆半径平方 (128/2)^2
 dist_sq = (x_coords - center)**2 + (y_coords - center)**2
 mask = dist_sq <= barrelR_sq  # True表示在桶内
 
-P = np.load('complex_projections.npy')
+P = np.load('projection_data/complex_projections.npy')
 X = np.zeros(shape=128*128, dtype=np.float32)
 
-for n in range(50):
+for n in range(10):
     X_before_art = X.copy()
     
     for i in range(36*20):
